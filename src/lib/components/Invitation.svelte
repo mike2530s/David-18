@@ -108,7 +108,7 @@
           <span class="text-2xl">📅</span>
           <div>
             <p class="text-party-light font-bold text-base">Sábado 17 de octubre de 2026</p>
-            <p class="text-white/60 text-sm">Mark the date</p>
+            <p class="text-white/60 text-sm">¡Aparta la fecha!</p>
           </div>
         </div>
         <div class="flex items-center gap-4">
