@@ -55,6 +55,7 @@
     if (!f) return;
     archivo = f;
     preview = URL.createObjectURL(f);
+    e.target.value = '';
   }
 
   async function handleSubmit(e) {
@@ -154,16 +155,56 @@
         </div>
 
         <div>
-          <label class="text-party-silver text-xs uppercase tracking-wider block mb-1" for="foto">Tu foto</label>
-          <label for="foto" class="flex flex-col items-center justify-center w-full h-36 rounded-xl cursor-pointer border-2 border-dashed border-party-light/40 hover:border-party-light transition-colors bg-white/5 overflow-hidden relative">
-            {#if preview}
-              <img src={preview} alt="preview" class="absolute inset-0 w-full h-full object-cover rounded-xl" />
-            {:else}
-              <span class="text-3xl mb-1">📷</span>
-              <span class="text-white/50 text-xs">Toca para tomar o elegir foto</span>
-            {/if}
-          </label>
-          <input id="foto" type="file" accept="image/*" onchange={handleFile} class="hidden" />
+          <span class="text-party-silver text-xs uppercase tracking-wider block mb-2">Tu foto</span>
+          {#if preview}
+            <div class="relative w-full h-44 rounded-2xl overflow-hidden border border-party-light/40 bg-black/40">
+              <img src={preview} alt="preview" class="w-full h-full object-cover" />
+              <button
+                type="button"
+                onclick={() => { archivo = null; preview = ''; }}
+                class="absolute top-2 right-2 bg-black/80 hover:bg-black text-white text-xs px-3 py-1.5 rounded-full border border-white/20 transition-colors flex items-center gap-1 shadow-lg"
+              >
+                ✕ Cambiar
+              </button>
+            </div>
+          {:else}
+            <div class="grid grid-cols-2 gap-3">
+              <!-- Botón Cámara -->
+              <label
+                for="foto-camara"
+                class="flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer border-2 border-dashed border-party-light/40 hover:border-party-light bg-white/5 active:scale-95 transition-all text-center"
+              >
+                <span class="text-3xl mb-1">📸</span>
+                <span class="text-party-light text-xs font-semibold">Tomar foto</span>
+                <span class="text-white/40 text-[10px] mt-0.5">Abrir cámara</span>
+              </label>
+              <input
+                id="foto-camara"
+                type="file"
+                accept="image/*"
+                capture="environment"
+                onchange={handleFile}
+                class="hidden"
+              />
+
+              <!-- Botón Galería -->
+              <label
+                for="foto-galeria"
+                class="flex flex-col items-center justify-center p-4 rounded-2xl cursor-pointer border-2 border-dashed border-party-silver/40 hover:border-party-light bg-white/5 active:scale-95 transition-all text-center"
+              >
+                <span class="text-3xl mb-1">🖼️</span>
+                <span class="text-party-silver text-xs font-semibold">De galería</span>
+                <span class="text-white/40 text-[10px] mt-0.5">Elegir archivo</span>
+              </label>
+              <input
+                id="foto-galeria"
+                type="file"
+                accept="image/*"
+                onchange={handleFile}
+                class="hidden"
+              />
+            </div>
+          {/if}
         </div>
 
         {#if error}
