@@ -10,8 +10,11 @@
   const PARTY_DATE = new Date('2026-10-17T17:00:00-05:00');
 
   let now = $state(new Date());
-  // ?preview=true desbloquea la galería para pruebas
-  const testMode = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('preview') === 'true';
+  // ?unlock=true o ?preview=true desbloquea la galería para pruebas
+  const testMode = typeof window !== 'undefined' && (
+    new URLSearchParams(window.location.search).get('unlock') === 'true' ||
+    new URLSearchParams(window.location.search).get('preview') === 'true'
+  );
   let isOpen = $derived(testMode || now >= PARTY_DATE);
 
   let timeLeft = $derived(() => {
