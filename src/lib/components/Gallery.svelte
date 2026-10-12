@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { fade } from 'svelte/transition';
-  import { collection, addDoc, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
+  import { collection, addDoc, onSnapshot, orderBy, query, serverTimestamp, doc, deleteDoc } from 'firebase/firestore';
   import { db } from '$lib/firebase.js';
   import { uploadToCloudinary } from '$lib/cloudinary.js';
   import { scrollReveal } from '$lib/actions/scrollReveal.js';
@@ -82,6 +82,16 @@
       enviando = false;
     }
   }
+
+  async function eliminarFoto(id) {
+    if (!confirm('¿Deseas eliminar esta foto de la galería?')) return;
+    try {
+      await deleteDoc(doc(db, 'invitados_fotos', id));
+    } catch (err) {
+      console.error(err);
+      alert('No se pudo eliminar la foto.');
+    }
+  }
 </script>
 
 <!-- ── Sección galería ──────────────────────────────────── -->
@@ -153,7 +163,7 @@
               <span class="text-white/50 text-xs">Toca para tomar o elegir foto</span>
             {/if}
           </label>
-          <input id="foto" type="file" accept="image/*" capture="environment" onchange={handleFile} class="hidden" />
+          <input id="foto" type="file" accept="image/*" onchange={handleFile} class="hidden" />
         </div>
 
         {#if error}
@@ -185,9 +195,17 @@
     <h3 class="font-display text-party-silver text-lg text-center mb-4 tracking-wide">✨ Fotos de la noche</h3>
     <div class="columns-2 gap-2">
       {#each fotos as foto (foto.id)}
-        <div in:fade={{ duration: 400 }} class="break-inside-avoid mb-2">
+        <div in:fade={{ duration: 400 }} class="break-inside-avoid mb-3 relative group">
           <img src={foto.url_foto} alt={foto.nombre} loading="lazy" class="w-full rounded-2xl object-cover shadow-lg" />
-          <p class="text-white/50 text-xs text-center mt-1 pb-1">{foto.nombre}</p>
+          <button
+            onclick={() => eliminarFoto(foto.id)}
+            class="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/60 hover:bg-red-600 text-white flex items-center justify-center text-xs shadow-md backdrop-blur-sm transition-colors cursor-pointer"
+            title="Eliminar foto"
+            aria-label="Eliminar foto"
+          >
+            🗑️
+          </button>
+          <p class="text-white/70 text-xs text-center mt-1 pb-1">{foto.nombre}</p>
         </div>
       {/each}
     </div>
