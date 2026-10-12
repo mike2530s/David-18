@@ -11,8 +11,8 @@
 
   let now = $state(new Date());
   // ?preview=true desbloquea la galería para pruebas
-  const preview = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('preview') === 'true';
-  let isOpen = $derived(preview || now >= PARTY_DATE);
+  const testMode = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('preview') === 'true';
+  let isOpen = $derived(testMode || now >= PARTY_DATE);
 
   let timeLeft = $derived(() => {
     const diff = PARTY_DATE - now;
