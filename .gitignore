@@ -6,3 +6,12 @@ build/
 .env.*
 !.env.example
 .claude/
+
+# Scripts temp & private media
+scripts/.wa_auth/
+scripts/temp_fotos/
+scripts/temp_clips/
+scripts/node_modules/
+scripts/*.mp4
+scripts/invitados_whatsapp.json
+scripts/musica.mp3
