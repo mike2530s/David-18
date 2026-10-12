@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Scroll reveal ───────────────────────────────────── */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Star particles background ───────────────────────── */
+.stars-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 15%, rgba(192,192,192,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 40%, rgba(147,197,253,0.6) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 40% 20%, rgba(255,255,255,0.9) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 60%, rgba(192,192,192,0.7) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 70% 10%, rgba(147,197,253,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 45%, rgba(255,255,255,0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 75%, rgba(192,192,192,0.5) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 15% 80%, rgba(147,197,253,0.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 90%, rgba(255,255,255,0.8) 0%, transparent 100%),
+    radial-gradient(1px 1px at 35% 70%, rgba(192,192,192,0.6) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Typography ──────────────────────────────────────── */
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ── Page-level transitions ──────────────────────────── */
+.page-fade {
+  animation: pageFadeIn 0.5s ease forwards;
+}
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
