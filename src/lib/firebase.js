@@ -1,23 +1,15 @@
-import { initializeApp, getApps } from 'firebase/app';
+import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import {
-  PUBLIC_FIREBASE_API_KEY,
-  PUBLIC_FIREBASE_AUTH_DOMAIN,
-  PUBLIC_FIREBASE_PROJECT_ID,
-  PUBLIC_FIREBASE_STORAGE_BUCKET,
-  PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  PUBLIC_FIREBASE_APP_ID
-} from '$env/static/public';
+import { env } from '$env/dynamic/public';
 
 const config = {
-  apiKey: PUBLIC_FIREBASE_API_KEY,
-  authDomain: PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: PUBLIC_FIREBASE_APP_ID
+  apiKey: env.PUBLIC_FIREBASE_API_KEY || env.PUBLI_FIREBASE_API_KEY || 'demo-api-key',
+  authDomain: env.PUBLIC_FIREBASE_AUTH_DOMAIN || env.PUBLI_FIREBASE_AUTH_DOMAIN || 'davi-18.firebaseapp.com',
+  projectId: env.PUBLIC_FIREBASE_PROJECT_ID || env.PUBLI_FIREBASE_PROJECT_ID || 'davi-18',
+  storageBucket: env.PUBLIC_FIREBASE_STORAGE_BUCKET || env.PUBLI_FIREBASE_STORAGE_BUCKET || 'davi-18.appspot.com',
+  messagingSenderId: env.PUBLIC_FIREBASE_MESSAGING_SENDER_ID || env.PUBLI_FIREBASE_MESSAGING_SENDER_ID || '1234567890',
+  appId: env.PUBLIC_FIREBASE_APP_ID || env.PUBLI_FIREBASE_APP_ID || '1:1234567890:web:abcdef'
 };
 
-// Avoid reinitializing on HMR
-const app = getApps().length ? getApps()[0] : initializeApp(config);
+const app = getApps().length ? getApp() : initializeApp(config);
 export const db = getFirestore(app);
