@@ -30,7 +30,14 @@
 </script>
 
 <svelte:head>
-  <meta name="description" content="Invitación a los 18 años de Davi — Sábado 17 de octubre de 2026" />
+  <title>David • 18 Años</title>
+  <meta name="description" content="Invitación a los 18 años de David — Sábado 17 de octubre de 2026, 5:00 PM" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://david-18.vercel.app/" />
+  <meta property="og:title" content="David • 18 Años 🎉" />
+  <meta property="og:description" content="¡Estás invitado a celebrar mis 18 años! Sábado 17 de octubre de 2026, 5:00 PM." />
+  <meta property="og:image" content="https://david-18.vercel.app/og-image.jpg" />
+  <meta property="og:image:secure_url" content="https://david-18.vercel.app/og-image.jpg" />
 </svelte:head>
 
 {#if !partyUnlocked}
