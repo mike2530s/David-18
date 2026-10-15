@@ -6,8 +6,8 @@
   import { uploadToCloudinary } from '$lib/cloudinary.js';
   import { scrollReveal } from '$lib/actions/scrollReveal.js';
 
-  // Sábado 17 de octubre de 2026 a las 5:00 PM (hora centro México, CDT = UTC-5)
-  const PARTY_DATE = new Date('2026-10-17T17:00:00-05:00');
+  // Sábado 17 de octubre de 2026 a las 4:00 PM (hora centro México, CDT = UTC-5)
+  const PARTY_DATE = new Date('2026-10-17T16:00:00-05:00');
 
   let now = $state(new Date());
   // ?unlock=true o ?preview=true desbloquea la galería para pruebas
@@ -131,7 +131,7 @@
         {/if}
 
         <p class="text-white/40 text-xs">
-          🔒 Se abre el sábado 17 de octubre a las 5:00 PM
+          🔒 Se abre el sábado 17 de octubre a las 4:00 PM
         </p>
       </div>
 

@@ -73,7 +73,7 @@
         "Hay momentos en la vida que merecen celebrarse en grande, y este es uno de ellos.
         Te considero una persona muy especial en mi vida, por lo que será un verdadero honor
         contar con tu presencia en mis 18 años. Nos espera una noche inolvidable: buena comida,
-        el mejor ambiente con grupo norteño, banda y sonido hasta que el cuerpo aguante.
+        el mejor ambiente con grupo norteño y sonido hasta que el cuerpo aguante.
         Espero contar con tu asistencia. ¡No faltes!"
       </p>
     </div>
@@ -112,16 +112,16 @@
           </div>
         </div>
         <div class="flex items-center gap-4">
-          <span class="text-2xl">🕔</span>
+          <span class="text-2xl">🕓</span>
           <div>
-            <p class="text-party-light font-bold text-base">5:00 PM</p>
+            <p class="text-party-light font-bold text-base">4:00 PM</p>
             <p class="text-white/60 text-sm">¡No llegues tarde!</p>
           </div>
         </div>
         <div class="flex items-center gap-4">
           <span class="text-2xl">🎶</span>
           <div>
-            <p class="text-party-light font-bold text-base">Grupo Norteño & Banda</p>
+            <p class="text-party-light font-bold text-base">Grupo Norteño</p>
             <p class="text-white/60 text-sm">Sonido hasta que el cuerpo aguante</p>
           </div>
         </div>
